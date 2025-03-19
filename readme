@@ -1,0 +1,81 @@
+C:\Users\SONIA\r>node app.js
+Servidor corriendo en http://localhost:3000
+Executing (default): SELECT "Usuario"."id", "Usuario"."correo", "Usuario"."password", "Usuario"."createdAt", "Usuario"."updatedAt", "Tareas"."id" AS "Tareas.id", "Tareas"."titulo" AS "Tareas.titulo", "Tareas"."descripcion" AS "Tareas.descripcion", "Tareas"."estado" AS "Tareas.estado", "Tareas"."fechavencimiento" AS "Tareas.fechavencimiento", "Tareas"."userId" AS "Tareas.userId", "Tareas"."createdAt" AS "Tareas.createdAt", "Tareas"."updatedAt" AS "Tareas.updatedAt" FROM "Usuarios" AS "Usuario" LEFT OUTER JOIN "Tareas" AS "Tareas" ON "Usuario"."id" = "Tareas"."userId";
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
+Error: Illegal arguments: number, string
+    at _async (C:\Users\SONIA\r\node_modules\bcryptjs\umd\index.js:305:15)
+    at C:\Users\SONIA\r\node_modules\bcryptjs\umd\index.js:335:11
+    at new Promise (<anonymous>)
+    at Object.compare (C:\Users\SONIA\r\node_modules\bcryptjs\umd\index.js:334:16)
+    at exports.loginUsuario (C:\Users\SONIA\r\controllers\login.controller.js:19:35)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
+Executing (default): INSERT INTO "Usuarios" ("id","correo","password","createdAt","updatedAt") VALUES (DEFAULT,$1,$2,$3,$4) RETURNING "id","correo","password","createdAt","updatedAt";
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
+Executing (default): SELECT "Usuario"."id", "Usuario"."correo", "Usuario"."password", "Usuario"."createdAt", "Usuario"."updatedAt", "Tareas"."id" AS "Tareas.id", "Tareas"."titulo" AS "Tareas.titulo", "Tareas"."descripcion" AS "Tareas.descripcion", "Tareas"."estado" AS "Tareas.estado", "Tareas"."fechavencimiento" AS "Tareas.fechavencimiento", "Tareas"."userId" AS "Tareas.userId", "Tareas"."createdAt" AS "Tareas.createdAt", "Tareas"."updatedAt" AS "Tareas.updatedAt" FROM "Usuarios" AS "Usuario" LEFT OUTER JOIN "Tareas" AS "Tareas" ON "Usuario"."id" = "Tareas"."userId";
+Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
+Executing (default): SELECT "id", "titulo", "descripcion", "estado", "fechavencimiento", "userId", "createdAt", "updatedAt" FROM "Tareas" AS "Tarea";
+SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+^C
+C:\Users\SONIA\r>node app.js
+Servidor corriendo en http://localhost:3000
+SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+^C
+C:\Users\SONIA\r>node app.js
+Servidor corriendo en http://localhost:3000
+SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
+    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:518:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
