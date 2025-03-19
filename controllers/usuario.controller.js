@@ -38,7 +38,7 @@ exports.crearUsuarios= async (req, res) => {
       const nuevoUsuario = await Usuario.create({ correo, password });
   
       // Generar el token JWT
-      const token = jwt.sign({ id: nuevoUsuario.id, correo: nuevoUsuario.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({ id: nuevoUsuario.id, correo: nuevoUsuario.correo }, process.env.JWT_SECRET, { expiresIn: '1h' });
   
       // Responder con el token JWT
       res.status(201).json({
