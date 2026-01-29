@@ -9,73 +9,44 @@ Error: Illegal arguments: number, string
     at new Promise (<anonymous>)
     at Object.compare (C:\Users\SONIA\r\node_modules\bcryptjs\umd\index.js:334:16)
     at exports.loginUsuario (C:\Users\SONIA\r\controllers\login.controller.js:19:35)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
-Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'jbo@gmail.com' LIMIT 1;
-Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
-Executing (default): INSERT INTO "Usuarios" ("id","correo","password","createdAt","updatedAt") VALUES (DEFAULT,$1,$2,$3,$4) RETURNING "id","correo","password","createdAt","updatedAt";
-Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
-Executing (default): SELECT "Usuario"."id", "Usuario"."correo", "Usuario"."password", "Usuario"."createdAt", "Usuario"."updatedAt", "Tareas"."id" AS "Tareas.id", "Tareas"."titulo" AS "Tareas.titulo", "Tareas"."descripcion" AS "Tareas.descripcion", "Tareas"."estado" AS "Tareas.estado", "Tareas"."fechavencimiento" AS "Tareas.fechavencimiento", "Tareas"."userId" AS "Tareas.userId", "Tareas"."createdAt" AS "Tareas.createdAt", "Tareas"."updatedAt" AS "Tareas.updatedAt" FROM "Usuarios" AS "Usuario" LEFT OUTER JOIN "Tareas" AS "Tareas" ON "Usuario"."id" = "Tareas"."userId";
-Executing (default): SELECT "id", "correo", "password", "createdAt", "updatedAt" FROM "Usuarios" AS "Usuario" WHERE "Usuario"."correo" = 'sonia@gmail.com' LIMIT 1;
-Executing (default): SELECT "id", "titulo", "descripcion", "estado", "fechavencimiento", "userId", "createdAt", "updatedAt" FROM "Tareas" AS "Tarea";
-SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
-    at JSON.parse (<anonymous>)
-    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
-    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
-    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
-    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
-    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
-    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
-    at IncomingMessage.emit (node:events:518:28)
-    at endReadableNT (node:internal/streams/readable:1698:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-^C
-C:\Users\SONIA\r>node app.js
-Servidor corriendo en http://localhost:3000
-SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
-    at JSON.parse (<anonymous>)
-    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
-    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
-    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
-    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
-    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
-    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
-    at IncomingMessage.emit (node:events:518:28)
-    at endReadableNT (node:internal/streams/readable:1698:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
-    at JSON.parse (<anonymous>)
-    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
-    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
-    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
-    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
-    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
-    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
-    at IncomingMessage.emit (node:events:518:28)
-    at endReadableNT (node:internal/streams/readable:1698:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
-    at JSON.parse (<anonymous>)
-    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
-    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
-    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
-    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
-    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
-    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
-    at IncomingMessage.emit (node:events:518:28)
-    at endReadableNT (node:internal/streams/readable:1698:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-^C
-C:\Users\SONIA\r>node app.js
-Servidor corriendo en http://localhost:3000
-SyntaxError: Expected property name or '}' in JSON at position 7 (line 2 column 5)
-    at JSON.parse (<anonymous>)
-    at parse (C:\Users\SONIA\r\node_modules\body-parser\lib\types\json.js:92:19)
-    at C:\Users\SONIA\r\node_modules\body-parser\lib\read.js:128:18
-    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
-    at invokeCallback (C:\Users\SONIA\r\node_modules\raw-body\index.js:238:16)
-    at done (C:\Users\SONIA\r\node_modules\raw-body\index.js:227:7)
-    at IncomingMessage.onEnd (C:\Users\SONIA\r\node_modules\raw-body\index.js:287:7)
-    at IncomingMessage.emit (node:events:518:28)
-    at endReadableNT (node:internal/streams/readable:1698:12)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at process.processTicksAndRejections
+<svg width="1440" height="1024" viewBox="0 0 1440 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- MENU -->
+  <rect x="0" y="0" width="1440" height="80" fill="#203764"/>
+  <text x="80" y="50" fill="#9d9d9c" font-size="16" font-family="Arial">Inicio</text>
+  <text x="150" y="50" fill="#9d9d9c" font-size="16" font-family="Arial">Sobre</text>
+  <text x="230" y="50" fill="#9d9d9c" font-size="16" font-family="Arial">Contacto</text>
+
+  <rect x="1240" y="20" width="120" height="40" rx="6" fill="#95c11f"/>
+  <text x="1265" y="47" fill="#ffffff" font-size="16" font-family="Arial">Suscribirse</text>
+
+  <!-- CONTENT -->
+  <rect x="0" y="80" width="1440" height="744" fill="#ffffff"/>
+
+  <text x="80" y="180" fill="#177090" font-size="48" font-family="Arial" font-weight="bold">
+    Bienvenido a Mi Sitio
+  </text>
+
+  <text x="80" y="240" fill="#9d9d9c" font-size="18" font-family="Arial">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </text>
+  <text x="80" y="270" fill="#9d9d9c" font-size="18" font-family="Arial">
+    Todo este contenido es editable y no se rompe.
+  </text>
+
+  <rect x="80" y="320" width="140" height="48" rx="6" fill="#69b7c6"/>
+  <text x="115" y="352" fill="#ffffff" font-size="16" font-family="Arial">Botón 1</text>
+
+  <rect x="240" y="320" width="140" height="48" rx="6" fill="#69b7c6"/>
+  <text x="275" y="352" fill="#ffffff" font-size="16" font-family="Arial">Botón 2</text>
+
+  <!-- FOOTER -->
+  <rect x="0" y="824" width="1440" height="200" fill="#203764"/>
+
+  <text x="80" y="900" fill="#9d9d9c" font-size="14" font-family="Arial">
+    © 2026 Mi Sitio · Aviso legal · Contacto
+  </text>
+
+  <rect x="1240" y="880" width="100" height="36" rx="6" fill="#95c11f"/>
+  <text x="1265" y="905" fill="#ffffff" font-size="14" font-family="Arial">Acción</text>
+</svg>
