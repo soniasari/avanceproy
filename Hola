@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Estados y Colores Semánticos UI/UX</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(100, 116, 139, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-full font-sans antialiased transition-colors duration-200 flex flex-col">
+
+    <header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="p-2 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-lg">
+                        <i data-lucide="palette" class="w-6 h-6"></i>
+                    </span>
+                    <div>
+                        <h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Catálogo de Estados Semánticos UI/UX</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">57 Estados Empresariales • Selecciona una paleta de color normal</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                    <!-- Tabs for switching Normal color -->
+                    <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-700/60 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-medium">
+                        <button id="tabHex203764" onclick="setNormalColor('#203764')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold">
+                            <span class="w-3 h-3 rounded-full bg-[#203764] inline-block border border-white/20"></span>
+                            <span>#203764</span>
+                        </button>
+                        <button id="tabHex177090" onclick="setNormalColor('#177090')" class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                            <span class="w-3 h-3 rounded-full bg-[#177090] inline-block border border-white/20"></span>
+                            <span>#177090</span>
+                        </button>
+                    </div>
+
+                    <!-- Botón para Exportar / Enviar a Word -->
+                    <button id="exportWordBtn" onclick="exportToWord()" class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5 text-xs font-semibold shadow-xs" title="Exportar Catálogo a Microsoft Word">
+                        <i data-lucide="file-text" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                        <span class="hidden sm:inline">Exportar a Word</span>
+                    </button>
+
+                    <!-- Theme Switcher -->
+                    <button id="themeToggle" class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors" title="Cambiar Tema">
+                        <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        
+        <!-- Info Banner -->
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <p>
+                Visualización agrupada por columnas según la categoría de color. Haz clic en los códigos HEX para copiarlos al portapapeles.
+            </p>
+            <div class="flex items-center gap-4 text-[11px] font-medium">
+                <span class="flex items-center gap-1.5"><span id="normalLegendDot" class="w-2.5 h-2.5 rounded-full bg-[#203764]"></span> Normal / Azul</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#D97706]"></span> Amarillo</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#B91C1C]"></span> Rojo</span>
+            </div>
+        </div>
+
+        <!-- Cards Container Grid by Columns -->
+        <div id="statusGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            <!-- Dynamically populated into 3 columns via JS -->
+        </div>
+    </main>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 hidden transform translate-y-2 opacity-0 transition-all duration-200 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 border border-slate-700 text-xs">
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+        <span id="toastMessage">Copiado al portapapeles</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-400">
+        Guía de Color Semántico UI/UX • Diseñado para Aplicaciones y Sistemas Empresariales
+    </footer>
+
+    <script>
+        let currentNormalColor = '#203764'; // Default normal color
+
+        // Array de 57 parámetros mapeados estrictamente según la matriz del Excel adjunto
+        const statusParameters = [
+            { id: "activado", name: "ACTIVADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "activo", name: "ACTIVO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "anulado", name: "ANULADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "aperturado", name: "APERTURADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "aplicado", name: "APLICADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "aprobado", name: "APROBADO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "autorizado", name: "AUTORIZADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "bloqueado", name: "BLOQUEADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "caducado", name: "CADUCADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "cancelado", name: "CANCELADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "cerrado", name: "CERRADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "certificado", name: "CERTIFICADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "confirmado", name: "CONFIRMADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "definitivo", name: "DEFINITIVO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "desbloqueado", name: "DESBLOQUEADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "ejecutando", name: "EJECUTANDO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "eliminado", name: "ELIMINADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "en_espera", name: "EN ESPERA", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "en_proceso", name: "EN PROCESO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "en_tramite", name: "EN TRAMITE", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "entregado", name: "ENTREGADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "error", name: "ERROR", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "error_en_definitivo", name: "ERROR EN DEFINITIVO", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "error_en_preliminar", name: "ERROR EN PRELIMINAR", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "escisionado", name: "ESCISIONADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "excluido", name: "EXCLUIDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "facturado", name: "FACTURADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "fallido", name: "FALLIDO", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "finalizado", name: "FINALIZADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "finalizado_con_errores", name: "FINALIZADO CON ERRORES", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "fusionado", name: "FUSIONADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "liquidado", name: "LIQUIDADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "modificado", name: "MODIFICADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "no_procesado", name: "NO PROCESADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "notificado", name: "NOTIFICADO", category: "danger", textHex: "#B91C1C", bgHex: "#FEE2E2" },
+            { id: "pagado", name: "PAGADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "pendiente", name: "PENDIENTE", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "por_llenar", name: "POR LLENAR", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "preliminar", name: "PRELIMINAR", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "procesado", name: "PROCESADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "procesando", name: "PROCESANDO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "rechazado", name: "RECHAZADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "rectificado", name: "RECTIFICADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "redimido", name: "REDIMIDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "registrado", name: "REGISTRADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "registrado_modificacion", name: "REGISTRADO MODIFICACION", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "revertido", name: "REVERTIDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "revisado", name: "REVISADO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "revocado", name: "REVOCADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "simulando", name: "SIMULANDO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" },
+            { id: "sin_fuente", name: "SIN FUENTE", category: "normal", bgHex: "#E0F2FE" },
+            { id: "suspendido", name: "SUSPENDIDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "terminado", name: "TERMINADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "transferido", name: "TRANSFERIDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "unificado", name: "UNIFICADO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "valorando", name: "VALORANDO", category: "normal", bgHex: "#E0F2FE" },
+            { id: "vencido", name: "VENCIDO", category: "warning", textHex: "#D97706", bgHex: "#FEF9C3" }
+        ];
+
+        const statusGrid = document.getElementById('statusGrid');
+        const themeToggle = document.getElementById('themeToggle');
+
+        function setNormalColor(color) {
+            currentNormalColor = color;
+            
+            // Update tab button styles
+            const btn1 = document.getElementById('tabHex203764');
+            const btn2 = document.getElementById('tabHex177090');
+            const legendDot = document.getElementById('normalLegendDot');
+
+            if (color === '#203764') {
+                btn1.className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold";
+                btn2.className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                legendDot.style.backgroundColor = '#203764';
+            } else {
+                btn2.className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold";
+                btn1.className = "px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+                legendDot.style.backgroundColor = '#177090';
+            }
+
+            renderItems();
+        }
+
+        function renderItems() {
+            const normalItems = statusParameters.filter(item => item.category === 'normal');
+            const warningItems = statusParameters.filter(item => item.category === 'warning');
+            const dangerItems = statusParameters.filter(item => item.category === 'danger');
+
+            const renderCard = (item) => {
+                const textHex = item.category === 'normal' ? currentNormalColor : item.textHex;
+                const isYellow = item.category === 'warning';
+
+                return `
+                    <div class="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-xl shadow-xs flex flex-col justify-between gap-2 hover:border-slate-300 dark:hover:border-slate-600 transition-colors">
+                        <div class="py-0.5 flex items-center gap-2">
+                            ${isYellow ? `<span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-xs ring-2 ring-amber-200 dark:ring-amber-900/50"></span>` : ''}
+                            <span class="text-sm font-bold tracking-wide" style="color: ${textHex}">
+                                ${item.name}
+                            </span>
+                        </div>
+                        <div class="pt-1.5 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[11px] font-mono">
+                            <button onclick="copyToClipboard('${item.bgHex}', 'Hex de Fondo copiado: ${item.bgHex}')" class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 transition-colors" title="Copiar Fondo Hex">
+                                <span class="text-[10px] text-slate-400 font-sans uppercase font-medium">Bg:</span>
+                                <span>${item.bgHex}</span>
+                            </button>
+                            <button onclick="copyToClipboard('${textHex}', 'Hex de Texto copiado: ${textHex}')" class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 transition-colors" title="Copiar Texto Hex">
+                                <span class="text-[10px] text-slate-400 font-sans uppercase font-medium">Text:</span>
+                                <span>${textHex}</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            };
+
+            statusGrid.innerHTML = `
+                <!-- Column 1: Normal / Azul -->
+                <div class="flex flex-col gap-3">
+                    <div class="sticky top-16 z-20 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-xs py-2 px-1 border-b-2 border-blue-600 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full inline-block" style="background-color: ${currentNormalColor}"></span>
+                            <h2 class="text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">Normal / Azul</h2>
+                        </div>
+                        <span class="text-xs px-2 py-0.5 rounded-full font-semibold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
+                            ${normalItems.length}
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        ${normalItems.map(renderCard).join('')}
+                    </div>
+                </div>
+
+                <!-- Column 2: Amarillo -->
+                <div class="flex flex-col gap-3">
+                    <div class="sticky top-16 z-20 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-xs py-2 px-1 border-b-2 border-amber-500 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <h2 class="text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">Amarillo</h2>
+                        </div>
+                        <span class="text-xs px-2 py-0.5 rounded-full font-semibold bg-amber-100 dark:bg-amber-900/60 text-amber-700 dark:text-amber-300">
+                            ${warningItems.length}
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        ${warningItems.map(renderCard).join('')}
+                    </div>
+                </div>
+
+                <!-- Column 3: Rojo -->
+                <div class="flex flex-col gap-3">
+                    <div class="sticky top-16 z-20 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-xs py-2 px-1 border-b-2 border-red-600 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-600 inline-block"></span>
+                            <h2 class="text-xs font-bold tracking-wider uppercase text-slate-800 dark:text-slate-200">Rojo</h2>
+                        </div>
+                        <span class="text-xs px-2 py-0.5 rounded-full font-semibold bg-red-100 dark:bg-red-900/60 text-red-700 dark:text-red-300">
+                            ${dangerItems.length}
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        ${dangerItems.map(renderCard).join('')}
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+        }
+
+        function copyToClipboard(text, message = "Copiado al portapapeles") {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+
+        function exportToWord() {
+            const dateStr = new Date().toLocaleDateString('es-ES');
+            
+            const normalItems = statusParameters.filter(item => item.category === 'normal');
+            const warningItems = statusParameters.filter(item => item.category === 'warning');
+            const dangerItems = statusParameters.filter(item => item.category === 'danger');
+
+            const buildColumnHtml = (items, categoryTitle, headerBg, headerText) => {
+                let rows = '';
+                items.forEach((item, index) => {
+                    const textHex = item.category === 'normal' ? currentNormalColor : item.textHex;
+                    rows += `
+                        <tr>
+                            <td style="border:1px solid #cbd5e1; padding:6px 8px; font-weight:bold; color:${textHex}; font-size:9.5pt; background-color:#ffffff;">
+                                ${index + 1}. ${item.name}
+                            </td>
+                            <td style="border:1px solid #cbd5e1; padding:4px 6px; font-family:Consolas, monospace; font-size:8pt; text-align:center; color:#475569; background-color:#f8fafc;">
+                                T: ${textHex}<br/>B: ${item.bgHex}
+                            </td>
+                        </tr>
+                    `;
+                });
+                return `
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%; border-collapse:collapse; margin-bottom:10px;">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="background-color:${headerBg}; color:${headerText}; border:1px solid #0f172a; padding:8px; text-align:center; font-size:11pt; font-weight:bold;">
+                                    ${categoryTitle} (${items.length})
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="background-color:#e2e8f0; color:#1e293b; border:1px solid #cbd5e1; padding:6px; font-size:9pt; text-align:left; width:65%;">Estado</th>
+                                <th style="background-color:#e2e8f0; color:#1e293b; border:1px solid #cbd5e1; padding:6px; font-size:9pt; text-align:center; width:35%;">Valores HEX</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                `;
+            };
+
+            const wordHtml = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Catálogo de Colores Semánticos UI/UX</title>
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <w:WordDocument>
+                            <w:View>Print</w:View>
+                            <w:Zoom>100</w:Zoom>
+                            <w:DoNotOptimizeForBrowser/>
+                        </w:WordDocument>
+                    </xml>
+                    <![endif]-->
+                    <style>
+                        @page Section1 { size: 11.0in 8.5in; mso-page-orientation: landscape; margin: 0.5in 0.5in 0.5in 0.5in; }
+                        div.Section1 { page: Section1; }
+                        body { font-family: 'Segoe UI', 'Calibri', 'Arial', sans-serif; color: #1e293b; padding: 0px; margin: 0px; }
+                        h1 { color: #0f172a; font-size: 16pt; margin-bottom: 2pt; font-family: 'Segoe UI', sans-serif; }
+                        p { color: #64748b; font-size: 9.5pt; margin-top: 0; margin-bottom: 12pt; }
+                    </style>
+                </head>
+                <body>
+                    <div class="Section1">
+                        <h1>Catálogo de Estados y Colores Semánticos UI/UX</h1>
+                        <p>Fecha de generación: ${dateStr} • Paleta Normal seleccionada: ${currentNormalColor} • Total: ${statusParameters.length} Estados Empresariales en 3 Columnas</p>
+                        
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="width:100%; border-collapse:collapse; table-layout:fixed;">
+                            <tr>
+                                <td width="33%" valign="top" style="width:33%; vertical-align:top; padding-right:8px;">
+                                    ${buildColumnHtml(normalItems, 'NORMAL / AZUL', currentNormalColor, '#ffffff')}
+                                </td>
+                                <td width="33%" valign="top" style="width:33%; vertical-align:top; padding-left:4px; padding-right:4px;">
+                                    ${buildColumnHtml(warningItems, 'AMARILLO', '#D97706', '#ffffff')}
+                                </td>
+                                <td width="34%" valign="top" style="width:34%; vertical-align:top; padding-left:8px;">
+                                    ${buildColumnHtml(dangerItems, 'ROJO', '#B91C1C', '#ffffff')}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob(['\ufeff', wordHtml], {
+                type: 'application/msword'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = `Catalogo_Colores_3_Columnas_${currentNormalColor.replace('#', '')}.doc`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url);
+            
+            showToast('Documento en 3 columnas exportado a Word');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 200);
+            }, 2500);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Renderizar elementos al iniciar
+        renderItems();
+    </script>
+</body>
+</html>
